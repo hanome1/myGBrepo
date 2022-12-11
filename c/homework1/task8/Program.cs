@@ -9,7 +9,7 @@ if (numLine != null)
 
     int nextNum = 2;
 
-    while (nextNum < num) {
+    while (nextNum <= num) {
         Console.Write(nextNum+" ");
         nextNum = nextNum + 2;
     }
