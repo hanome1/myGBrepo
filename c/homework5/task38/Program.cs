@@ -43,5 +43,27 @@ int Min(int[] arr) {    //находит меньший элемент
 int Diff (int[] arr) { //находит разницу
     return Max(arr)-Min(arr);
 }
+
+int[] SortBubble(int[] arr) //сортировка массива пузырьком
+{
+    int temp = 0; //временный контейнер для перетасовки
+    for (int j = 0; j < arr.Length - 1; j++)
+    {
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            if (arr[i] > arr[i + 1])
+            {
+                temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
 int[] array = GenArr(ReadData("Введите длину массива."));
 PrintData(array,"\nразница между максимальным и минимальным элементами массива: ", Diff(array));
+
+Console.WriteLine("\nОтсортированный массив:");
+PrintArr(SortBubble(array));
