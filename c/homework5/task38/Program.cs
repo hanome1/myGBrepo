@@ -1,4 +1,4 @@
-﻿﻿int ReadData(string msg) //чтение данных, перевод в число
+﻿int ReadData(string msg) //чтение данных, перевод в число
 {
     Console.WriteLine(msg);
     return int.Parse(Console.ReadLine() ?? "0");
@@ -13,16 +13,9 @@ int[] GenArr(int len) { //генератор массива
     int[] arr = new int[len];
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = rnd.Next(100, 1000);
+        arr[i] = rnd.Next(-100, 100);
     }
     return arr;
-}
-int Counter (int[] arr) { //счетчик четных элементов
-    int count = 0;
-    for (int i = 0; i < arr.Length; i++) {
-    if (arr[i] % 2 == 0) count++;
-    }
-    return count;
 }
 void PrintArr(int[] arr)  //печатаем массив красиво
 {
@@ -33,5 +26,22 @@ void PrintArr(int[] arr)  //печатаем массив красиво
     }
     Console.WriteLine(arr[arr.Length-1]+"]");
 }
+int Max(int[] arr) {    //находит больший элемент
+    int max = arr[0];
+    for (int i = 0; i < arr.Length; i++) {
+        if (arr[i] > max) max = arr[i];
+    }
+    return max;
+}
+int Min(int[] arr) {    //находит меньший элемент
+    int min = arr[0];
+    for (int i = 0; i < arr.Length; i++) {
+        if (arr[i] < min) min = arr[i];
+    }
+    return min;
+}
+int Diff (int[] arr) { //находит разницу
+    return Max(arr)-Min(arr);
+}
 int[] array = GenArr(ReadData("Введите длину массива."));
-PrintData(array,"\n четных элементов в массиве: ",Counter(array));
+PrintData(array,"\nразница между максимальным и минимальным элементами массива: ", Diff(array));
