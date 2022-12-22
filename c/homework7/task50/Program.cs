@@ -58,24 +58,24 @@ int[,] GenFibo(int rows, int columns) //генератор массива
     {
         for (int j = 0; j < columns; j++)
         {
-            if (i == 0 && j == 0)
+            if (i == 0 && j == 0) //первое число
             {
                 arr2D[i, j] = 0;
             }
 
-            else if (i == 0 && j == 1)
+            else if (i == 0 && j == 1) //второе число
             {
                 arr2D[i, j] = 1;
             }
 
-            else if (j >= 2)
+            else if (j >= 2) //след число в одном ряду
             {
 
-                arr2D[i, j] = arr2D[i, j - 1] + arr2D[i, j - 2];
+                arr2D[i, j] = arr2D[i, j-1] + arr2D[i, j-2];
             }
-            else
+            else //след число два ряда
             {
-                arr2D[i, j] = arr2D[i - 1, arr2D.GetLength(1)] + arr2D[i - 1 + j, Math.Abs(j-1) * arr2D.GetLength(1)- Math.Abs(j-1)];
+                arr2D[i, j] = arr2D[i, j] = arr2D[i - 1, arr2D.GetLength(1)-1] + arr2D[i - 1 + j, Math.Abs(j - 1) * arr2D.GetLength(1) - Math.Abs(j - 1) * 2];
             }
         }
     }
