@@ -17,4 +17,4 @@ string Cubes(int n)
     result += Math.Pow(n, 3);
     return result;
 }
-PrintData(Cubes(ReadData("input your number")));
+PrintData(Cubes(ReadData("input your number"))); 
