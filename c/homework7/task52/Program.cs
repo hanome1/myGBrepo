@@ -28,17 +28,26 @@ void Print2DArray(int[,] arr2D)
     }
 }
 
-void PrintMidCol(int[,] arr)
+int Sort2DArray(int[,] arr2D)
 {
-    double res = 0;
-    for (int j = 0; j < arr.GetLength(1); j++)
+    for (int i = 0; i < arr2D.GetLength(0); i++)
     {
-        for (int i = 0; i < arr.GetLength(0); i++)
+        int temp = 0;
+        for (int k = 1; k < arr2D.GetLength(1); k++)
         {
-            res += arr[i,j];
+
+            for (int j = 1; j < arr2D.GetLength(1); j++)
+            {
+                if (arr2D[i, j] < arr2D[i, j - 1])
+                {
+                    temp = arr2D[i, j];
+                    arr2D[i, j] = arr2D[i, j - 1];
+                    arr2D[i, j - 1] = temp;
+                }
+            }
         }
-        Console.WriteLine($"Среднее арифметическое чисел в стобце {j+1}: {res/arr.GetLength(0)}");
     }
+    return arr2D;
 }
 
 int[,] userArray = (GenArr2D(
@@ -48,4 +57,4 @@ int[,] userArray = (GenArr2D(
     ReadData("Введите верхний предел")));
 Print2DArray(userArray);
 Console.WriteLine();
-PrintMidCol(userArray);
+Print2DArray(Sort2DArray(userArray));
